@@ -47,7 +47,7 @@ jobs:
             channel: 'pr58655'
         - uses: julia-actions/cache@v2
         - run: julia -e 'import Pkg; Pkg.activate("juliac"); Pkg.develop([Pkg.PackageSpec(path="."), Pkg.PackageSpec(path="dev/zenoh"), Pkg.PackageSpec(path="dev/cdr"), Pkg.PackageSpec(path="dev/px4messages"), Pkg.PackageSpec(path="dev/cclousre")])'
-        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac.jl --output-exe qfc --experimental --trim=unsafe-warn ./onboard.jl
+        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac/juliac.jl --output-exe qfc --experimental --trim=unsafe-warn ./onboard.jl
           env:
             JULIA_CPU_TARGET: cortex-a72
         - uses: actions/upload-artifact@v4
