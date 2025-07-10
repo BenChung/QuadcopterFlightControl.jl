@@ -1,0 +1,6 @@
+[deps]
+CClosure = "6238cdf7-1651-426a-bbec-388a63a3d275"
+InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+QuadcopterFlightControl = "20c1a1f1-e202-4446-a9d3-b6d75a2589c6"
+ZenohC_jll = "a3bec183-2cd9-52aa-977e-56c7968661ce"

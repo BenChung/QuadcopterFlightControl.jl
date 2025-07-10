@@ -1,0 +1,6 @@
+[deps]
+Bonito = "824d6782-a2ef-11e9-3a09-e5662e0c26f8"
+Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+QuadcopterFlightControl = "20c1a1f1-e202-4446-a9d3-b6d75a2589c6"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+Zenoh = "b742139f-8771-480b-a9b2-33222b45d29b"

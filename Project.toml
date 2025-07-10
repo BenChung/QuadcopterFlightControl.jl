@@ -1,0 +1,23 @@
+name = "QuadcopterFlightControl"
+uuid = "20c1a1f1-e202-4446-a9d3-b6d75a2589c6"
+authors = ["Benjamin Chung <ckfinite@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CDRSerialization = "cbcadc0d-0faf-4c71-82b5-fceb8cc36223"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+PX4 = "8fe87df5-2dcb-416d-9ea3-33f91d6ee0d8"
+Rotations = "6038ab10-8711-5258-84ad-4b1120ba62dc"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+Zenoh = "b742139f-8771-480b-a9b2-33222b45d29b"
+Zenohd_jll = "60fe4315-4d9d-51d2-90b3-f4c2062225d6"
+
+[compat]
+CDRSerialization = "0.1.1"
+GeometryBasics = "0.5.9"
+LinearAlgebra = "1.11.0"
+Rotations = "1.7.1"
+StaticArrays = "1.9.13"
+Zenoh = "0.1.3"
+Zenohd_jll = "1.4.0"
