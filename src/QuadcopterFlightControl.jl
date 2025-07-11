@@ -73,8 +73,8 @@ function circle(interactive_handle=nothing)
                 target_pos .= ref_pos
             else
                 elapsed = (odometry.timestamp - start_time[])/1e6
-                speed = 1.25
-                size = 5.0
+                speed = 0.5
+                size = 1.0
                 travel_dist = elapsed * speed
                 tpos = SVector(size*sin(travel_dist+3π/2)+1 + ref_pos[1], size*cos(travel_dist+3π/2) + ref_pos[2], ref_pos[3])
                 rvel = SVector(size*speed*cos(travel_dist+3π/2), -size*speed*sin(travel_dist+3π/2), 0.0)
