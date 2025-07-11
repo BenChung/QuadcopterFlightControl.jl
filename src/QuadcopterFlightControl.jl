@@ -31,7 +31,7 @@ function circle(interactive_handle=nothing)
     sub_failsafes = nothing
     s = nothing
     try
-        c = Zenoh.Config(; str = """{connect: { endpoints: ["tcp/172.25.128.1:7448"]}}""")
+        c = Zenoh.Config(; from_env=true)
         s = open(c)
         ready_for_arm = Threads.Atomic{Bool}(false)
         armed = Ref(false)
