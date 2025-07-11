@@ -14,7 +14,7 @@ concurrency:
 jobs:
   compile:
     name: Run Juliac
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-22.04-arm
     timeout-minutes: 60
     permissions: # needed to allow julia-actions/cache to proactively delete old caches that it has created
       actions: write
