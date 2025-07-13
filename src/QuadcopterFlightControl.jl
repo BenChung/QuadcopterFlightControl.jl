@@ -31,7 +31,7 @@ function circle(interactive_handle=nothing)
     sub_failsafes = nothing
     s = nothing
     try
-        c = Zenoh.Config(; from_env=true)
+        c = Zenoh.Config(; str=ENV["ZENOH_CONFIG"])
         s = open(c)
         ready_for_arm = Threads.Atomic{Bool}(false)
         armed = Ref(false)

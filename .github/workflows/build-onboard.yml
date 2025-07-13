@@ -46,15 +46,11 @@ jobs:
           with:
             channel: 'pr58655'
         - uses: julia-actions/cache@v2
-        - run: julia -e 'import Pkg; Pkg.activate("."); Pkg.develop([Pkg.PackageSpec(path="dev/zenoh"), Pkg.PackageSpec(path="dev/cdr"), Pkg.PackageSpec(path="dev/px4messages"), Pkg.PackageSpec(path="dev/cclousre")])'
-        - run: julia -e 'import Pkg; Pkg.activate("packagecompiler"); Pkg.instantiate(); using PackageCompiler; create_app(".", "qfc_compiled")'
-          env:
-            JULIA_CPU_TARGET: cortex-a72
         - run: julia -e 'import Pkg; Pkg.activate("juliac"); Pkg.develop([Pkg.PackageSpec(path="."), Pkg.PackageSpec(path="dev/zenoh"), Pkg.PackageSpec(path="dev/cdr"), Pkg.PackageSpec(path="dev/px4messages"), Pkg.PackageSpec(path="dev/cclousre")])'
-        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac/juliac.jl --output-exe ../qfc_compiled/bin/QuadcopterFlightControl_juliac --experimental --trim=unsafe-warn ./onboard.jl
+        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac/juliac.jl --output-exe qfc --experimental --relative-rpath --trim=unsafe-warn ./onboard.jl
           env:
             JULIA_CPU_TARGET: cortex-a72
-        - run: zip -r0 --symlinks -r qfc.zip qfc_compiled
+        - run: mkdir juliac/dist && cp -r $(julia -e "println(Sys.BINDIR)")/../lib juliac/dist/julia && cp juliac/qfc juliac/dist/ && zip -r0 --symlinks -r qfc.zip juliac/dist/
         - uses: actions/upload-artifact@v4
           with:
             name: qfc
