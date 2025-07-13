@@ -14,7 +14,7 @@ concurrency:
 jobs:
   compile:
     name: Run Juliac
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-22.04-arm
     timeout-minutes: 60
     permissions: # needed to allow julia-actions/cache to proactively delete old caches that it has created
       actions: write
@@ -47,10 +47,11 @@ jobs:
             channel: 'pr58655'
         - uses: julia-actions/cache@v2
         - run: julia -e 'import Pkg; Pkg.activate("juliac"); Pkg.develop([Pkg.PackageSpec(path="."), Pkg.PackageSpec(path="dev/zenoh"), Pkg.PackageSpec(path="dev/cdr"), Pkg.PackageSpec(path="dev/px4messages"), Pkg.PackageSpec(path="dev/cclousre")])'
-        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac/juliac.jl --output-exe qfc --experimental --trim=unsafe-warn ./onboard.jl
+        - run: cd juliac && julia --project $(julia -e "println(Sys.BINDIR)")/../share/julia/juliac/juliac.jl --output-exe qfc --experimental --relative-rpath --trim=unsafe-warn ./onboard.jl
           env:
             JULIA_CPU_TARGET: cortex-a72
+        - run: mkdir juliac/dist && cp -r $(julia -e "println(Sys.BINDIR)")/../lib juliac/dist/julia && cp juliac/qfc juliac/dist/ && zip -r0 --symlinks -r qfc.zip juliac/dist/
         - uses: actions/upload-artifact@v4
           with:
             name: qfc
-            path: juliac/qfc
+            path: qfc.zip
