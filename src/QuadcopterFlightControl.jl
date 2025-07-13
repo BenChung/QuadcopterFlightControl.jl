@@ -133,6 +133,14 @@ function circle(interactive_handle=nothing)
     end
 end
 
+
+function julia_main():Cint
+    println(Core.stdout, "Running flight controller")
+        
+    circle(nothing)
+
+    return zero(Cint)
+end
 #= 
 =#
 
