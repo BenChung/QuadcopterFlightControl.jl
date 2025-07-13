@@ -21,7 +21,6 @@ end
 update_interactive(::Nothing,tgt,real) = GeometricControlParams(kx = 1.0, kv = 1.0)
 
 function circle(interactive_handle=nothing)
-    ENV["RUST_LOG"] = "debug"
     setpoint_kexpr = Zenoh.Keyexpr("0/fmu/in/trajectory_setpoint/px4_msgs::msg::dds_::TrajectorySetpoint_/RIHS01_9a7deb0cb7db5e52b441169a284b90188c4efdf06b302d55cb1db33ca0358c1a")
     mode_kexpr = Zenoh.Keyexpr("0/fmu/in/offboard_control_mode/px4_msgs::msg::dds_::OffboardControlMode_/RIHS01_e87463f252f320d2f197d1feadd643b8645e5ef53a2b158dccfdf11372e00f9f")
     command_kexpr = Zenoh.Keyexpr("0/fmu/in/vehicle_command/px4_msgs::msg::dds_::VehicleCommand_/RIHS01_1f0ab537807e2e20e04826633ea2c52e5431bea8eb0187152ff23bd07f1dd30b")
