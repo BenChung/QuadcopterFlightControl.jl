@@ -45,7 +45,7 @@ jobs:
         - uses: julia-actions/install-juliaup@v2
           with:
             channel: 'pr58655'
-        - uses: julia-actions/cache@
+        - uses: julia-actions/cache@v2
         - run: julia -e 'import Pkg; Pkg.activate("."); Pkg.develop([Pkg.PackageSpec(path="dev/zenoh"), Pkg.PackageSpec(path="dev/cdr"), Pkg.PackageSpec(path="dev/px4messages"), Pkg.PackageSpec(path="dev/cclousre")])'
         - run: julia -e 'import Pkg; Pkg.activate("packagecompiler"); using PackageCompiler; create_app(".", "qfc_compiled")'
           env:
